@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Deficiency Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .deficiency {
+            color: red;
+            font-weight: bold;
+        }
+        .no-deficiency {
+            color: green;
+            font-weight: bold;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Nutrition Deficiency Result</h2>
+        <p id="resultMessage"></p>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const age = parseInt(urlParams.get('age'), 10);
+
+        const resultMessage = document.getElementById('resultMessage');
+        if (age < 50) {
+            resultMessage.innerHTML = "The person <span class='deficiency'>has a nutrition deficiency</span> based on age.";
+        } else {
+            resultMessage.innerHTML = "The person <span class='no-deficiency'>does not have a nutrition deficiency</span> based on age.";
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
